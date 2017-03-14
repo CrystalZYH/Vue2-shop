@@ -12,7 +12,7 @@
   "author": "crystalZYH",
   "license": "MIT",
   "dependencies": {
-    "faker": "^3.1.0",
+    // "faker": "^3.1.0",
     "json-server": "^0.8.14",
     "mock": "^0.1.1"
   }
