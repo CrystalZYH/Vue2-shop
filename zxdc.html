@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>在线订餐</title>
+    <link rel="stylesheet" href="public/css/zxdc.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="header-padding">
+            <div class="header">
+                <h1></h1>
+                <span class="close-btn icon-delete"></span>
+            </div>
+        </div>
+        <!--搜索框-->
+
+        <div class="main">
+            <div class="main-nav">
+                <!--<div class="mian-nav-tag all active">
+                    <img src="./img/quanbu.png" alt="全部">
+                    <span>全部</span>
+                </div>-->
+                <div class="mian-nav-tag" v-for="item in catalogueList" :class="{'active':item.id==selectedId}" @click="selectCatalogue(item)">
+                    <img v-bind:src="item.padImg" alt="">
+                    <span>{{item.name}}</span>
+                </div>
+            </div>
+            <div class="main-sortbar">
+                <ul class="main-sortbar-inner">
+                    <li id="default">默认</li>
+                    <li class="J_xlpaixu">销量 <span class="default" :class="{'up':orderflag,'down':!orderflag}" @click="orderflag=!orderflag"></span></li>
+                    <li class="J_pfpaixu">评分 <span class="default" :class="{'up':starflag,'down':!starflag}" @click="starflag=!starflag"></span></li>
+                </ul>
+            </div>
+            <div class="main-itemlist">
+                <div class="grid">
+                    <div class="item" v-for="value in shopList" @click="entershop(value)">
+                        <div class="item-pic">
+                            <a href="javascript:void(0);">
+                                <img v-bind:src="value.imgPic" alt="">
+                                <!--<img v-if="value.imgPic" v-bind:src="value.imgPic" alt="?x-oss-process=image/resize,m_fill,h_165,w_165">-->
+                                <!--<img v-else v-bind:src="img/default.png" alt="?x-oss-process=image/resize,m_fill,h_165,w_165">-->
+                            </a>
+                        </div>
+                        <div class="item-tit">{{value.name}}</div>
+                        <div class="item-raty">
+                            <span v-if="value.orders< 10" class="new-shop">新店</span>
+                            <span v-else>{{value.stars}}分</span>
+                        </div>
+                        <div class="item-orders">月销售{{value.orders}}单</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/lib/vue2.js"></script>
+    <script src="js/lib/vue-resource.min.js"></script>
+    <script src="js/zxdc.js"></script>
+</body>
+
+</html>
